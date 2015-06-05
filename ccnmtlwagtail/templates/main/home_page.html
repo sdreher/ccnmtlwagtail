@@ -1,0 +1,26 @@
+{% extends "main/base.html" %}
+{% load main_tags %}
+
+
+{% block heading %}
+    <div class="jumbotron">
+        <h1>Wagtail Demo</h1>
+        <p>A set of demo templates to show you what Wagtail can do.</p>
+        {% block search_box %}
+            {% include "main/includes/search_box.html" only %}
+        {% endblock %}
+    </div>
+{% endblock %}
+
+
+{% block content %}
+    {% include "main/includes/carousel.html" with carousel_items=self.carousel_items.all only %}
+
+    {% include "main/includes/body.html" with body=self.body only %}
+
+    {% person_listing_homepage %}
+
+    {% blog_listing_homepage %}
+
+    {% event_listing_homepage %}
+{% endblock %}
